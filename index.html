@@ -3,49 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tic Tac Toe - Fun Mode</title>
+  <title>Tic Tac Toe - Modern Fun</title>
   <style>
     * { box-sizing: border-box; }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: #fff;
       margin: 0;
       padding: 20px;
-      text-align: center;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 20px;
     }
 
     h1 {
       font-size: 3rem;
-      margin-bottom: 10px;
       color: #00ffff;
-      text-shadow: 0 0 15px #00ffffaa;
+      text-shadow: 0 0 20px #00ffffaa;
+      margin-bottom: 10px;
     }
 
     .controls {
-      margin: 10px 0;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
       justify-content: center;
       align-items: center;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    }
+
+    label {
+      font-weight: 600;
+      color: #00ffff;
+      margin-right: 5px;
     }
 
     select, button {
+      padding: 10px 15px;
       font-size: 1rem;
-      padding: 8px 12px;
-      border-radius: 8px;
+      border-radius: 10px;
       border: none;
       outline: none;
       cursor: pointer;
-      background: #ffffffcc;
+      transition: background 0.3s ease;
+    }
+
+    select {
+      background-color: #ffffffdd;
       color: #000;
+    }
+
+    button {
+      background: #00ffff;
+      font-weight: bold;
+      color: #000;
+    }
+
+    button:hover {
+      background: #00cccc;
     }
 
     #game {
@@ -53,8 +76,9 @@
       grid-template-columns: repeat(3, 100px);
       gap: 15px;
       padding: 20px;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
     }
 
     .cell {
@@ -65,26 +89,32 @@
       color: #fff;
       background: rgba(255, 255, 255, 0.1);
       border: 2px solid #00ffff;
-      border-radius: 15px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: transform 0.3s, background 0.3s;
-      position: relative;
+      transition: transform 0.3s ease, background 0.3s ease;
     }
 
     .cell:hover {
-      background: rgba(0, 255, 255, 0.1);
+      background: rgba(0, 255, 255, 0.15);
       transform: scale(1.05);
     }
 
-    .cell.x { color: #ff5252; text-shadow: 0 0 5px #ff5252aa; }
-    .cell.o { color: #1abc9c; text-shadow: 0 0 5px #1abc9caa; }
+    .cell.x {
+      color: #ff5c5c;
+      text-shadow: 0 0 10px #ff5c5caa;
+    }
+
+    .cell.o {
+      color: #1abc9c;
+      text-shadow: 0 0 10px #1abc9caa;
+    }
 
     .message {
       font-size: 1.5rem;
-      margin: 15px 0;
+      margin-top: 10px;
       text-shadow: 0 0 8px #ffffff88;
     }
 
@@ -98,75 +128,42 @@
       to { box-shadow: 0 0 20px #00ffffaa; }
     }
 
-    #restartButton {
-      background: #00ffff;
-      font-weight: bold;
-      color: #000;
-      transition: 0.3s;
-    }
-
-    #restartButton:hover {
-      background: #00cccc;
-    }
-
     .score {
       margin-top: 10px;
       font-size: 1rem;
     }
 
-   @media (max-width: 500px) {
-  body {
-    padding: 10px;
-  }
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 2rem;
+      }
 
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-  }
+      .controls {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+      }
 
-  .controls {
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-  }
+      select, button {
+        width: 100%;
+        max-width: 300px;
+        font-size: 1.1rem;
+      }
 
-  .controls label {
-    font-size: 1rem;
-    color: #00ffff;
-    margin-bottom: -8px;
-  }
+      #game {
+        grid-template-columns: repeat(3, 80px);
+        gap: 12px;
+      }
 
-  select, button {
-    width: 100%;
-    max-width: 300px;
-    font-size: 1.1rem;
-    padding: 10px 14px;
-    border-radius: 10px;
-  }
+      .cell {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+      }
 
-  #game {
-    grid-template-columns: repeat(3, 80px);
-    gap: 12px;
-    padding: 10px;
-  }
-
-  .cell {
-    width: 80px;
-    height: 80px;
-    font-size: 2.2rem;
-  }
-
-  .message {
-    font-size: 1.2rem;
-    margin-top: 20px;
-  }
-
-  .score {
-    font-size: 1rem;
-    margin-top: 10px;
-  }
-}
-
+      .message {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
@@ -194,7 +191,7 @@
   <div class="message" id="message"></div>
   <div class="score" id="score">Score - X: 0 | O: 0</div>
 
-  <!-- 🎵 Sound effects -->
+  <!-- Sounds -->
   <audio id="clickSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_26183d9f2f.mp3"></audio>
   <audio id="winSound" src="https://cdn.pixabay.com/audio/2022/02/23/audio_7f31cd1f87.mp3"></audio>
   <audio id="drawSound" src="https://cdn.pixabay.com/audio/2022/10/26/audio_53c8d9f3f4.mp3"></audio>
