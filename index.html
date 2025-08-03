@@ -114,31 +114,59 @@
       font-size: 1rem;
     }
 
-    @media (max-width: 500px) {
-      #game {
-        grid-template-columns: repeat(3, 80px);
-        gap: 10px;
-      }
+   @media (max-width: 500px) {
+  body {
+    padding: 10px;
+  }
 
-      .cell {
-        width: 80px;
-        height: 80px;
-        font-size: 2rem;
-      }
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
 
-      h1 {
-        font-size: 2.2rem;
-      }
+  .controls {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
 
-      .controls {
-        flex-direction: column;
-        gap: 10px;
-      }
+  .controls label {
+    font-size: 1rem;
+    color: #00ffff;
+    margin-bottom: -8px;
+  }
 
-      select, button {
-        width: 90%;
-        max-width: 250px;
-      }
+  select, button {
+    width: 100%;
+    max-width: 300px;
+    font-size: 1.1rem;
+    padding: 10px 14px;
+    border-radius: 10px;
+  }
+
+  #game {
+    grid-template-columns: repeat(3, 80px);
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .cell {
+    width: 80px;
+    height: 80px;
+    font-size: 2.2rem;
+  }
+
+  .message {
+    font-size: 1.2rem;
+    margin-top: 20px;
+  }
+
+  .score {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+}
+
     }
   </style>
 </head>
